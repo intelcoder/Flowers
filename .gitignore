@@ -1,0 +1,17 @@
+/bootstrap/compiled.php
+/node_modules
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+composer.phar
+composer.lock
+yarn.lock
+.env.local.php
+.env.php
+.env
+.Vagrantfile
+.env.example
