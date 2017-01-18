@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\View;
 class CustomersController extends Controller
 {
 
-   public function __construct__(){
-     
-   }
+    private $repository;
+
+    public function __construct__(Repository $repository){
+      dd($repository);
+      $this->repository = $repository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,10 +23,10 @@ class CustomersController extends Controller
      */
     public function index()
     {
-      $customers = Customers::all();
+      $customers = $this->repository->getAll();
       $data = array( 'customers' => $customers);
 
-      return View::make("customers")->with($data);
+      return $data;
     }
 
     /**

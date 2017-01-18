@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Repository;
+use App\Repositories\RepositoryInterface;
 use App\Models\Customers;
 
-class CustomersRepository implements Repository {
+class CustomersRepository implements RepositoryInterface {
 
   private $model;
 
@@ -14,6 +14,8 @@ class CustomersRepository implements Repository {
   }
 
   public function getAll(){
+    dd('test');
+
     return $this->model->all();
 
   }

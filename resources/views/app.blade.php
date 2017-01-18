@@ -5,7 +5,7 @@
   </head>
   <body>
     <div id="app">
-      @{{message}}123sdfsdfsdf
+      @{{message}}성준123123
       <Example/>
     </div>
     <script src="/js/app.js"/></script>
