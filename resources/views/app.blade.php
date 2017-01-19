@@ -5,9 +5,14 @@
   </head>
   <body>
     <div id="app">
-      @{{message}}성준123123
-      <Example/>
+
+
+      <router-view></router-view>
+    <div>
+      testing
     </div>
-    <script src="/js/app.js"/></script>
+
+    </div>
+    <script src="/js/bundle.js"/></script>
   </body>
 </html>

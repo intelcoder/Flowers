@@ -29,7 +29,6 @@ class CustomersController extends Controller
     {
       $customers = $this->repository->getAll();
       $data = array( 'customers' => $customers);
-
       return $data;
     }
 
@@ -62,7 +61,8 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = $this->repository->getById($id);
+        return $customer;
     }
 
     /**
@@ -96,6 +96,6 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        //
+       return $this->repository->delete($id);
     }
 }

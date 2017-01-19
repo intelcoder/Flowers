@@ -1,5 +1,6 @@
-
-window._ = require('lodash');
+import Vue from 'vue';
+import axios from 'axios';
+import VueRouter from 'vue-router';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -16,8 +17,10 @@ require('bootstrap-sass');
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue');
-require('vue-resource');
+Vue.use(VueRouter);
+window.Vue = Vue;
+
+window.axios = axios;
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
