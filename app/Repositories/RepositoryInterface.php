@@ -1,7 +1,8 @@
 <?php
 namespace App\Repositories;
 
-interface Repository {
+interface RepositoryInterface {
+
   public function getAll();
   public function getById($id);
   public function create(array $attributes);
