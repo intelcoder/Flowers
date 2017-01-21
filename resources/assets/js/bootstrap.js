@@ -1,14 +1,16 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueRouter from 'vue-router';
-
-import Materialize from 'materialize-css/bin/materialize.js';
+import 'expose?$!expose?jQuery!jquery';
+import materialize from 'materialize-sass-origin/js/bin/materialize';
+// import bootstrap from 'bootstrap-sass/assets/javascripts/bootstrap';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
+
 
 global.jQuery = require('jquery');
 var $ = global.jQuery;

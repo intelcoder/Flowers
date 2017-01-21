@@ -5,7 +5,10 @@
 // Variables
 @import "variables";
 
+// Bootstrap
+//@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "../../../node_modules/materialize-sass-origin/sass/materialize";
 // Mixin
 @import "./mixin";
 @import './normalize';
-@import "node_modules/materialize-sass-origin/sass/materialize.scss";

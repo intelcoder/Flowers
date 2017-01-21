@@ -1,6 +1,7 @@
 let webpack = require('webpack');
 let path = require('path');
 
+
 module.exports = {
     entry: './resources/assets/js/app.js',
 
@@ -13,11 +14,6 @@ module.exports = {
         includePaths: [path.resolve(__dirname, 'resources/assets/sass')]
     },
 
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.common.js'
-        }
-    },
     module: {
         rules: [
             {
@@ -47,17 +43,19 @@ module.exports = {
                 }
             },
             {
+                //materialize loader jquery, jquery.hammer preload
+                test: /materialize-css\/bin\//,
+                loader: 'imports?jQuery=jquery,$=jquery,hammerjs'
+            },
+
+            {
                 test: /\.scss$/,
                 loaders: [ 'style', 'css?sourceMap!sass?sourceMap' ]
             }
         ]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery"
-        })
+
     ]
 
 };

@@ -1,7 +1,6 @@
 <template>
-
-    <div class="container">
-        <div id="loading-page" v-bind:class="{ hide: !isLoading }">
+    <div>
+        <div id="loading-page"  v-if="isLoading">
             <div class="preloader-wrapper big active">
                 <div class="spinner-layer spinner-blue-only">
                     <div class="circle-clipper left">
@@ -14,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <table class="striped" v-if="">
+        <table class="table table-striped" v-if="!isLoading">
             <thead>
             <tr>
                 <th data-field="id">#</th>
@@ -23,13 +22,12 @@
                 <th data-field="price">Address</th>
             </tr>
             </thead>
-
             <tbody>
             <tr v-for="(customer, index) in customers">
                 <td>{{index + 1}}</td>
                 <td>{{getFullName(customer.first_name, customer.last_name)}}</td>
                 <td>{{customer.phone}}</td>
-
+                <td>{{customer.address.address_code}}</td>
             </tr>
             </tbody>
         </table>
@@ -37,6 +35,7 @@
 </template>
 <script>
     import axios from 'axios';
+
     export default {
         data () {
             return {
