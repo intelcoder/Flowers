@@ -8,4 +8,9 @@ class Address extends Model
 {
     protected $table = 'address';
 
+
+    public function customers () {
+        return $this->belongsTo(Customers::class);
+    }
+
 }

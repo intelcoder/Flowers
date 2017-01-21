@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Customers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customers;
+use App\Repositories\Repository;
+use App\Repositories\CustomersRepository;
+
 use Illuminate\Support\Facades\View;
 
 class CustomersController extends Controller
@@ -12,8 +15,7 @@ class CustomersController extends Controller
 
     private $repository;
 
-    public function __construct__(Repository $repository){
-      dd($repository);
+    public function __construct(CustomersRepository $repository){
       $this->repository = $repository;
     }
     /**
@@ -21,11 +23,15 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-      $customers = $this->repository->getAll();
-      $data = array( 'customers' => $customers);
+      $customers = $this->repository->with(['address']);
 
+$customers =\Customers::with('address')->get();
+
+      $data = array( 'customers' => $customers->toArray());
       return $data;
     }
 
@@ -58,7 +64,8 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = $this->repository->getById($id);
+        return $customer;
     }
 
     /**
@@ -92,6 +99,6 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        //
+       return $this->repository->delete($id);
     }
 }

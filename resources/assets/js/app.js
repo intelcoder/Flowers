@@ -1,25 +1,31 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router';
+//bootstrap load ( not bootstrap framework )
+import bootstrap from './bootstrap';
+import 'expose?$!expose?jQuery!jquery';
+import TopNav from './components/TopNav/TopNav.vue';
+import SideNav from './components/SideNav/SideNav.vue';
+import CustomersPage from './components/CustomersPage/CutsomersPage.vue';
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-import Vue from 'vue';
-import VueResource from 'vue-resource';
-
-Vue.use(VueResource);
-import Example from './components/Example.vue';
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+const router = new VueRouter({
+    mode: 'history',
+    base: __dirname,
+    history: true,
+    routes: [
+        {path: '/customers', component: CustomersPage}
+    ]
+});
 
 new Vue({
-        components: { Example },
-        data: {
-          message: 'test messagestest'
-        }
-    }).$mount('#app')
-export default app;
+    created(){
+    },
+    components: {
+        'side-nav': SideNav,
+        'top-nav': TopNav
+    },
+    mounted(){
+    },
+    router
+}).$mount('#app');
+
+
