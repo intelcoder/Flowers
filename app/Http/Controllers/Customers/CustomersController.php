@@ -27,8 +27,11 @@ class CustomersController extends Controller
 
     public function index()
     {
-      $customers = $this->repository->getAll();
-      $data = array( 'customers' => $customers);
+      $customers = $this->repository->with(['address']);
+
+$customers =\Customers::with('address')->get();
+
+      $data = array( 'customers' => $customers->toArray());
       return $data;
     }
 

@@ -2,15 +2,17 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueRouter from 'vue-router';
 
+import Materialize from 'materialize-css/bin/materialize.js';
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
-
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean
@@ -18,21 +20,9 @@ require('bootstrap-sass');
  */
 
 Vue.use(VueRouter);
-window.Vue = Vue;
 
+window.$ = $;
 window.axios = axios;
-
-/**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
- */
-
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-
-    next();
-});
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

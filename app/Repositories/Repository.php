@@ -29,6 +29,10 @@ abstract class Repository implements RepositoryInterface {
       return $customer->delete($id);
   }
 
+  public function with(array $relation){
+    return $this->model->with(implode(',', $relation))->get();
+  }
+
 }
 
  ?>

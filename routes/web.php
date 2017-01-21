@@ -11,12 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/test', 'Customers\CustomersController@index');
+Route::get('/{vue?}', function() {
     return view('app');
-});
+})->where('vue', '[\/\w\.-]*');
 
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/customers', 'CustomersController@index');
