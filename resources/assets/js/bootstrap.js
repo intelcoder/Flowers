@@ -1,5 +1,9 @@
-
-window._ = require('lodash');
+import Vue from 'vue';
+import axios from 'axios';
+import VueRouter from 'vue-router';
+import 'expose?$!expose?jQuery!jquery';
+import materialize from 'materialize-sass-origin/js/bin/materialize';
+// import bootstrap from 'bootstrap-sass/assets/javascripts/bootstrap';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -7,29 +11,20 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
 
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue');
-require('vue-resource');
+Vue.use(VueRouter);
 
-/**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
- */
-
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-
-    next();
-});
+window.$ = $;
+window.axios = axios;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
